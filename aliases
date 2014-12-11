@@ -1,0 +1,10 @@
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .2='cd ../..'
+alias ..='cd ..'
+
+alias ll='ls -lah'
+alias history='history | grep $1'
+
+alias remdebug='export -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=4000,suspend=n'
+
