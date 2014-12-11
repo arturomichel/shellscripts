@@ -7,7 +7,7 @@
 # /home/me/stuff          -> ~/stuff               if USER=me
 # /usr/share/big_dir_name -> ../share/big_dir_name if pwdmaxlen=20
 ##################################################
-bash_prompt_command() {
+prompt_shorten() {
     # How many characters of the $PWD should be kept
     local pwdmaxlen=150
     # Indicate that there has been dir truncation
@@ -23,7 +23,7 @@ bash_prompt_command() {
     fi
 }
 
-bash_prompt() {
+prompt_colourize() {
     case $TERM in
      xterm*|rxvt*)
          local TITLEBAR='\[\033]0;\u:${NEW_PWD}\007\]'
@@ -73,6 +73,5 @@ bash_prompt() {
     # extra backslash in front of \$ to make bash colorize the prompt
 }
 
-PROMPT_COMMAND=bash_prompt_command
-bash_prompt
-unset bash_prompt
+PROMPT_COMMAND=prompt_shorten
+prompt_colourize
