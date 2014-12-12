@@ -7,7 +7,9 @@
 # /home/me/stuff          -> ~/stuff               if USER=me
 # /usr/share/big_dir_name -> ../share/big_dir_name if pwdmaxlen=20
 ##################################################
+GIT_INFO=""
 prompt_shorten() {
+    GIT_INFO=$(__git_ps1 $s)
     # How many characters of the $PWD should be kept
     local pwdmaxlen=150
     # Indicate that there has been dir truncation
@@ -21,6 +23,7 @@ prompt_shorten() {
         NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
         NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
     fi
+    NEW_PWD="$NEW_PWD $GIT_INFO"
 }
 
 prompt_colourize() {
@@ -66,6 +69,7 @@ prompt_colourize() {
     
     local UC=$W                 # user's color
     [ $UID -eq "0" ] && UC=$R   # root's color
+    #GIT_PS1=$(__git_ps1 "($s)")
     
     PS1="${W}\u@${EMW}\h ${B}[\t][\j] ${EMB}\${NEW_PWD}${EMR}\n > ${NONE}"
     # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
