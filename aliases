@@ -6,5 +6,12 @@ alias ..='cd ..'
 alias ll='ls -lah'
 alias history='history | grep $1'
 
-alias remdebug='export -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=4000,suspend=n'
+alias mvndebug='export -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=4000,suspend=n'
+
+function gitprompt() {
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=verbose
+export GIT_PS1_SHOWCOLORHINTS=1
+}
 

@@ -23,7 +23,7 @@ prompt_shorten() {
         NEW_PWD=${NEW_PWD:$pwdoffset:$pwdmaxlen}
         NEW_PWD=${trunc_symbol}/${NEW_PWD#*/}
     fi
-    NEW_PWD="$NEW_PWD $GIT_INFO"
+    NEW_PWD="$NEW_PWD$GIT_INFO"
 }
 
 prompt_colourize() {
